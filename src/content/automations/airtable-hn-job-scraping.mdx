@@ -1,0 +1,77 @@
+---
+name: "HN Who is Hiring Scrape"
+category: "operations-it"
+types:
+  - "data-reporting"
+  - "document-classification"
+workflowFile: "/workflows/airtable-hn-job-scraping.json"
+nodes:
+  - "Search for Who is hiring posts"
+  - "Split Out"
+  - "Get relevant data"
+  - "Get latest post"
+  - "HN API: Get Main Post"
+  - "Split out children (jobs)"
+  - "HI API: Get the individual job post"
+  - "Extract text"
+  - "Clean text"
+  - "Trun into structured data"
+  - "OpenAI Chat Model"
+  - "Structured Output Parser"
+  - "Write results to airtable"
+integrations: ['hacker news', 'openai', 'airtable']
+triggerNode: "When clicking ‘Test workflow’"
+featured: false
+createdAt: 2025-09-21T18:40:48.000Z
+---
+
+## Purpose & Benefits
+
+This automation is a powerful tool for scraping job postings from the monthly "Ask HN: Who is Hiring?" thread on Hacker News. It intelligently processes the raw, unstructured text of each job post and uses an AI model to transform it into a clean, structured, and consistent data format. The final structured data is then written to an Airtable base, making the information easy to search, filter, and analyze.
+
+This workflow is highly beneficial for:
+
+* **Job Seekers:** Automatically find and organize relevant job postings.
+* **Market Researchers:** Analyze hiring trends in the tech industry.
+* **Data Aggregators:** Collect structured data for further processing or for building a job board.
+
+## Trigger
+
+The workflow is triggered manually by clicking "Test workflow". For recurring usage, you can replace this with a `Schedule Trigger` node set to run monthly.
+
+## Workflow Steps & Logic
+
+The workflow follows a series of steps to scrape, clean, and transform the job data.
+
+1.  **Scrape the "Who is Hiring" Post (`httpRequest` node):**
+    * The workflow starts by making an API call to the Hacker News Algolia API to find the latest "Ask HN: Who is Hiring?" thread. It uses specific filters and query parameters to ensure it gets the correct post.
+
+2.  **Get Post Data & Extract Job Postings (`httpRequest` & `splitOut` nodes):**
+    * The workflow then uses the Hacker News Firebase API to get the main post's content and the IDs of all the individual comments (the job postings).
+    * The `Split out children (jobs)` node then separates each comment ID into a distinct item, allowing the workflow to process each job posting individually.
+
+3.  **Fetch & Clean Raw Text (`httpRequest` & `code` nodes):**
+    * The `HI API: Get the individual job post` node fetches the full content of each job posting.
+    * The `Clean text` node runs custom JavaScript to process the raw text. It removes HTML entities, tags, and other messy characters to prepare the content for the AI model.
+
+4.  **AI Data Structuring (`chainLlm` & `outputParserStructured` nodes):**
+    * This is the core of the automation. The `Trun into structured data` node uses an AI model (OpenAI GPT-4o-mini) to analyze the cleaned text.
+    * The `Structured Output Parser` provides a predefined JSON schema that the AI model must follow. This forces the output to be a consistent object with fields for `company`, `title`, `location`, `salary`, and more.
+
+5.  **Write to Airtable (`airtable` node):**
+    * The final step takes the clean, structured data from the AI output and writes it as a new record to a specified table in an Airtable base. This completes the process, making the job data easily accessible and searchable.
+
+## Credentials Required
+
+This automation requires the following credentials to be configured in your n8n instance:
+
+* **Hacker News (Algolia API):** To search for the relevant posts (handled via HTTP Header Auth).
+* **OpenAI API:** To use the AI chat model for data structuring.
+* **Airtable Personal Access Token:** To write the final, structured job data to an Airtable base.
+
+---
+
+### Updated JSON File Content
+
+I have removed all sensitive information, including API keys, account IDs, and specific Airtable base/table IDs, to ensure this JSON is safe for public use.
+
