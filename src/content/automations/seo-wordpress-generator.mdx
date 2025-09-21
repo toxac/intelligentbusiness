@@ -1,0 +1,84 @@
+---
+name: "Generate SEO-Optimized WordPress Content"
+category: "sales-marketing"
+types:
+  - "content-generation"
+  - "content-social-media"
+workflowFile: "/workflows/seo-wordpress-generator.json"
+nodes:
+  - "On form submission"
+  - "Perplexity Research"
+  - "Cleanup Links"
+  - "Copywriter AI Agent"
+  - "Create Title, Slug, Meta"
+  - "Create HTML"
+  - "Cleanup HTML"
+  - "Combine Blog Details"
+  - "Set Image URL"
+  - "GET Image"
+  - "Upload Image to Wordpress"
+  - "Set Image on Wordpress Post"
+  - "Wordpress"
+  - "Send Success Message to Telegram"
+integrations: ['perplexity', 'openai', 'wordpress', 'telegram']
+triggerNode: "On form submission"
+featured: false
+createdAt: 2025-09-21T23:08:43.000Z
+---
+
+## Purpose & Benefits
+
+This advanced automation is a complete content factory for your WordPress blog, designed to produce high-quality, SEO-optimized articles with minimal human effort. It takes a research query, uses AI to perform in-depth research with Perplexity, and then drafts a comprehensive blog post with a custom copywriter persona. The workflow also handles generating an SEO-friendly title, slug, and meta description, formats the content into WordPress-compatible HTML, and sets a featured image before publishing the post as a draft.
+
+### Key Benefits:
+* **Massive Time Savings:** Automates the entire research, writing, and publishing pipeline for blog content.
+* **SEO Optimization:** Ensures every post is optimized with a relevant title, slug, and meta description.
+* **Consistent Quality:** The AI copywriter agent follows a strict system prompt to maintain a consistent brand voice and content style.
+* **Structured HTML:** Creates well-formatted, clean HTML with a table of contents, making posts easy to read and index.
+
+---
+
+## Trigger
+
+### On form submission
+
+The workflow is activated by a manual form submission.
+
+* **Trigger:** A user manually enters a `Research Query` into the form and submits it.
+
+## Workflow Steps & Logic
+
+This is a multi-stage workflow that handles research, content generation, and publishing in a single automated pipeline.
+
+1.  **Research & Data Cleanup:**
+    * **Perplexity Research:** The workflow sends the research query from the form to the **Perplexity API**, a powerful search engine that provides research-backed answers.
+    * **Cleanup Links:** This node processes the research output, cleaning up and formatting citations for later use in the blog post.
+
+2.  **AI-Powered Content Generation:**
+    * **Copywriter AI Agent:** A dedicated AI agent, with a detailed system prompt defining its persona as a professional copywriter, drafts a comprehensive blog post using the research findings.
+    * **Create Title, Slug, Meta:** A separate AI agent generates an SEO-friendly title, slug, and meta description for the post, following specific guidelines to ensure they are optimized for search engines.
+    * **Create HTML:** The AI then formats the entire blog post into well-structured, WordPress-compatible HTML, complete with a title, reading time, key takeaways, and a table of contents.
+
+3.  **Image Handling:**
+    * **Set Image URL & GET Image:** The workflow uses a placeholder image URL to fetch a featured image.
+    * **Upload Image to Wordpress:** The downloaded image is then uploaded to the WordPress media library and its ID is used to set it as the featured image for the post.
+
+4.  **Publishing & Notification:**
+    * **Wordpress:** A new post is created in WordPress using the AI-generated title, slug, and HTML content. The post is saved as a `draft`, allowing for a final human review before publication.
+    * **Send Success Message to Telegram:** A Telegram message is sent to the designated channel to notify the team that the new blog post has been successfully created.
+
+## Credentials Required
+
+This automation requires the following credentials to be configured in your n8n instance:
+
+* **Perplexity API:** To perform research on a given topic.
+* **OpenAI API:** To power the AI agents for content and metadata generation.
+* **WordPress API:** To publish the post and its featured image.
+* **Telegram API:** To send success notifications.
+
+---
+
+### Updated JSON File Content
+
+I have removed all sensitive information, including API keys, webhook IDs, and specific URLs, to ensure this JSON is safe for public use.
+

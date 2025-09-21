@@ -1,0 +1,84 @@
+---
+name: "AI SEO Keyword Research Automation"
+category: "sales-marketing"
+types:
+  - "content-generation"
+  - "data-reporting"
+workflowFile: "/workflows/ai-seo-keyword-automation.json"
+nodes:
+  - "Get Input from NocoDB"
+  - "Set relevant fields"
+  - "Start Notification"
+  - "Update Status - Started"
+  - "Topic Expansion"
+  - "split primary keywords"
+  - "Search Volume & CPC"
+  - "Aggregate SV & CPC"
+  - "Keyword Difficulty"
+  - "Aggregate KWD"
+  - "Merge SV, CPC & KWD"
+  - "Merge Topic Expansion, SV, CPC & KWD"
+  - "Format Json and add Competitor URLs"
+  - "Split the Competitor URLs"
+  - "Keyword Ranking per URL"
+  - "Competitor Analysis"
+  - "Aggregate Competitor Analysis"
+  - "Merge Everything"
+  - "Final Keyword Strategy"
+  - "Write Content Brief "
+  - "Update Status - Done"
+  - "Send Notification"
+integrations: ['nocodb', 'openai', 'dataforseo', 'slack']
+triggerNode: "Get Input from NocoDB"
+featured: false
+createdAt: 2025-09-21T23:09:47.000Z
+---
+
+## Purpose & Benefits
+
+This advanced automation streamlines the entire SEO keyword research process by combining the power of AI with professional SEO tools. When a new content idea is added to a NocoDB database, the workflow automatically generates a comprehensive keyword strategy and content brief. It uses AI to expand on a topic, retrieves real-time keyword data (search volume, difficulty) from a tool like DataForSEO, and analyzes competitor content to identify strategic gaps. This saves marketers and content teams a significant amount of time and ensures every piece of content is backed by solid data and a strategic plan.
+
+## Trigger
+
+### Get Input from NocoDB
+
+The workflow is activated by a webhook from NocoDB. When a new row is created in a designated NocoDB table, the webhook sends the record's data to start the automation.
+
+## Workflow Steps & Logic
+
+This is a complex workflow that orchestrates multiple parallel tasks to gather and synthesize data.
+
+1.  **Initial Setup & Notifications:**
+    * The workflow is triggered by the NocoDB webhook and immediately extracts the relevant fields (e.g., `primary_topic`, `target_audience`, `competitor_urls`).
+    * It then sends a "start" notification to a Slack channel and updates the status of the record in NocoDB to "Started".
+
+2.  **AI Keyword Expansion:**
+    * The **`Topic Expansion`** node, an AI agent powered by OpenAI, takes the core topic, audience, and content type to generate a structured list of primary keywords, long-tail variations, question-based keywords, and related topics.
+
+3.  **Keyword Metrics & Competitor Analysis:**
+    * The primary keywords are split and sent down two parallel paths to **DataForSEO**. One path retrieves **Search Volume and CPC**, while the other retrieves **Keyword Difficulty**. The results are aggregated and merged back together.
+    * Concurrently, the workflow takes a list of competitor URLs and uses DataForSEO to identify keywords they are ranking for. An AI agent, **`Competitor Analysis`**, then analyzes this data to pinpoint content gaps and unique angles.
+
+4.  **Final Strategy Synthesis:**
+    * All the data from the previous steps (AI-generated keywords, keyword metrics, and competitor analysis) is merged into a single item.
+    * An AI agent, **`Final Keyword Strategy`**, then synthesizes this raw data into a clear, actionable **SEO Content Brief**. This brief is formatted in Markdown with an executive summary, target keyword strategy, competitive landscape analysis, and content outline.
+
+5.  **Final Actions:**
+    * The final content brief is written back to a NocoDB table.
+    * The status of the original record in NocoDB is updated to "Done," and a "Done" notification is sent to Slack, marking the completion of the automation.
+
+## Credentials Required
+
+This automation requires the following credentials to be configured in your n8n instance:
+
+* **NocoDB API:** To receive the trigger and update the record status.
+* **OpenAI API:** To power the AI agents for keyword expansion and strategy synthesis.
+* **DataForSEO API:** To retrieve real-time keyword metrics and competitor ranking data.
+* **Slack API:** To send notifications for the start and completion of the workflow.
+
+---
+
+### Updated JSON File Content
+
+I have removed all sensitive information, including API keys, webhook IDs, and specific account details, to ensure this JSON is safe for public use.
+
