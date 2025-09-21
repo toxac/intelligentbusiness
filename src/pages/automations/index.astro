@@ -6,12 +6,6 @@ import { getCollection } from 'astro:content';
 // Fetch all automation entries
 const automations = await getCollection('automations');
 
-// Sort by featured first, then by creation date
-const sortedAutomations = automations.sort((a, b) => {
-  if (a.data.featured && !b.data.featured) return -1;
-  if (!a.data.featured && b.data.featured) return 1;
-  return (b.data.createdAt || new Date(0)).getTime() - (a.data.createdAt || new Date(0)).getTime();
-});
 ---
 
 <Layout title="Automations" description="Browse our collection of workflow automations">
