@@ -1,0 +1,61 @@
+---
+name: "Calendly to Pipedrive and Slack"
+category: "sales-marketing"
+types:
+  - "data-synchronization"
+  - "alerts-notifications"
+workflowFile: "/workflows/calendly-pipedrive-slack.json"
+nodes:
+  - "Calendly Trigger"
+  - "Pipedrive"
+  - "Date & Time"
+  - "Wait"
+  - "Slack"
+integrations: ['calendly', 'pipedrive', 'slack']
+triggerNode: "Calendly Trigger"
+featured: false
+createdAt: 2025-09-21T22:52:18.000Z
+---
+
+## Purpose & Benefits
+
+This workflow automates key tasks for sales teams by integrating Calendly, Pipedrive, and Slack. When a new meeting is booked in Calendly, the workflow automatically creates a corresponding activity in Pipedrive and sends a follow-up reminder to the assigned salesperson in Slack shortly after the meeting ends. This ensures sales activities are accurately logged in the CRM and that team members are prompted to add their notes, streamlining the post-meeting process.
+
+## Trigger
+
+### Calendly Trigger
+
+The workflow is activated by a webhook from Calendly whenever a new invitee books a meeting.
+
+* **Trigger:** An `invitee.created` event in your Calendly account.
+
+## Workflow Steps & Logic
+
+The workflow follows a two-pronged approach, simultaneously creating a CRM activity and setting up a delayed notification.
+
+1.  **Create Pipedrive Activity (`Pipedrive` node):**
+    * As soon as a meeting is booked in Calendly, this node instantly creates a new activity in Pipedrive.
+    * The activity's subject is dynamically generated from the Calendly event name and the invitee's name and start time, ensuring a clear and accurate record in your CRM.
+
+2.  **Schedule Follow-up Reminder (`Date & Time` & `Wait` nodes):**
+    * **Date & Time:** This node calculates a new timestamp by adding 15 minutes to the meeting's end time. This is the precise time the follow-up message will be sent.
+    * **Wait:** This node pauses the workflow until the new calculated time. This is a crucial step that ensures the Slack notification is sent after the meeting has concluded, not immediately after it's booked.
+
+3.  **Send Slack Notification (`Slack` node):**
+    * After the wait period, the workflow sends a direct message to the assigned salesperson in Slack.
+    * The message is a formatted reminder, including details of the meeting and a prompt to add their call notes. It also includes a visual cue (`✅`) to mark when the task is complete.
+
+## Credentials Required
+
+This automation requires the following credentials to be configured in your n8n instance:
+
+* **Calendly API:** To receive real-time webhooks for new meeting bookings.
+* **Pipedrive API:** To create a new activity record in your CRM.
+* **Slack API:** To send notifications and reminders to a specific channel or user.
+
+---
+
+### Updated JSON File Content
+
+I have removed all sensitive information, including API keys, webhook IDs, and specific account details, to ensure this JSON is safe for public use.
+

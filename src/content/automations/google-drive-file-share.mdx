@@ -1,0 +1,70 @@
+---
+name: "Google Drive Folder File Share"
+category: "operations-it"
+types:
+  - "document-processing"
+  - "internal-workflow"
+workflowFile: "/workflows/google-drive-file-share.json"
+nodes:
+  - "Manual Execute Workflow"
+  - "Set Folder ID"
+  - "Google Drive"
+  - "Loop Over Items"
+  - "Generate Download Links"
+  - "Change Status"
+  - "Merge"
+  - "Replace Me"
+integrations: ['google drive']
+triggerNode: "Manual Execute Workflow"
+featured: false
+createdAt: 2025-09-21T23:04:19.000Z
+---
+
+## Purpose & Benefits
+
+This automation is a utility for efficiently managing and sharing files stored in a Google Drive folder. It automatically lists all the files within a specified folder, changes their permissions to be publicly viewable, and generates direct download links for each file. This is highly useful for creating public repositories, sharing files with a large audience, or quickly generating a list of links to be saved in another application.
+
+## Trigger
+
+### Manual Execute Workflow
+
+This workflow is a manual utility that requires a user to trigger it.
+
+* **Trigger:** Manual execution.
+* **Setup:** Before running, you must enter the ID of the Google Drive folder you want to process in the `Set Folder ID` node.
+
+## Workflow Steps & Logic
+
+The workflow follows a clear, step-by-step process to list, share, and link your files.
+
+1.  **Set Folder ID (`Set Folder ID` node):**
+    * The workflow begins with a `Set` node where you input the ID of the Google Drive folder you wish to process.
+
+2.  **List Files (`Google Drive` node):**
+    * The `Google Drive` node queries your account and lists all the files contained within the folder ID provided in the previous step.
+
+3.  **Process Files in Batches (`Loop Over Items` node):**
+    * The `Loop Over Items` node processes the files from the folder in manageable batches. This is particularly useful for folders with a large number of files.
+
+4.  **Generate Links & Update Permissions (`Generate Download Links` & `Change Status` nodes):**
+    * For each file, the `Change Status` node automatically makes it public by granting `anyone` the `reader` role.
+    * The `Generate Download Links` node then constructs a direct download link for that file, which can be shared externally.
+
+5.  **Merge Data (`Merge` node):**
+    * The `Merge` node combines the original file metadata with the newly generated public links and permission information.
+
+6.  **Finalize & Store Data (`Replace Me` node):**
+    * The `Replace Me` node serves as a placeholder for a final action. You would typically connect a data store node here, such as a Google Sheets, Airtable, or database node, to save the list of file names and their newly generated public links.
+
+## Credentials Required
+
+This automation requires the following credentials to be configured in your n8n instance:
+
+* **Google Drive OAuth2 API:** To access, list, and update permissions for files in your Google Drive.
+
+---
+
+### Updated JSON File Content
+
+I have removed all sensitive information, including API keys and specific account IDs, to ensure this JSON is safe for public use. The placeholder folder ID has also been removed.
+

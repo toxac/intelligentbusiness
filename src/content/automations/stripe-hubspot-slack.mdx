@@ -1,0 +1,66 @@
+---
+name: "Stripe Invoice Payment to Hubspot & Slack"
+category: "sales-marketing"
+types:
+  - "data-synchronization"
+  - "alerts-notifications"
+workflowFile: "/workflows/stripe-hubspot-slack.json"
+nodes:
+  - "When Invoice Paid"
+  - "If no PO Number"
+  - "Find Deal based on PO Number"
+  - "If no deal found for PO"
+  - "Update Deal to Paid"
+  - "Send invoice paid message"
+  - "Send no PO Message"
+  - "Send Deal not found message"
+integrations: ['stripe', 'hubspot', 'slack']
+triggerNode: "When Invoice Paid"
+featured: false
+createdAt: 2025-09-21T22:47:12.000Z
+---
+
+## Purpose & Benefits
+
+This workflow automates the process of managing sales and finances by connecting Stripe, Hubspot, and Slack. When a Stripe invoice is successfully paid, the workflow automatically updates the corresponding deal in Hubspot and notifies the accounts team in Slack. This ensures all departments have real-time visibility into payments, streamlines the deal management process, and reduces manual data entry errors.
+
+## Trigger
+
+### When Invoice Paid
+
+The workflow is activated by a webhook from Stripe whenever an invoice payment is successful.
+
+* **Trigger:** A successful `invoice.payment_succeeded` event in your Stripe account.
+
+## Workflow Steps & Logic
+
+This workflow uses conditional logic to handle various scenarios, ensuring the correct actions are taken whether a purchase order (PO) number is present or not.
+
+1.  **Check for PO Number (`If no PO Number` node):**
+    * The workflow first checks the incoming Stripe invoice data to see if a custom `po_number` field is empty.
+    * **If no PO Number is found (TRUE path):** A message is sent to a dedicated Slack channel (`team-accounts`) to alert the team about a payment that needs manual processing or identification.
+    * **If a PO Number is present (FALSE path):** The workflow proceeds to search for the corresponding deal in Hubspot.
+
+2.  **Find & Update Hubspot Deal:**
+    * **Find Deal based on PO Number:** The workflow queries Hubspot's Deals database using the PO number from the Stripe invoice.
+    * **Check for Deal (`If no deal found for PO` node):** If no matching deal is found, a warning message is sent to the Slack channel. If a deal is found, the workflow proceeds.
+    * **Update Deal to Paid:** The deal in Hubspot is updated to reflect that the invoice has been paid. A custom property, `paid`, is set to `Yes`.
+
+3.  **Send Notifications to Slack:**
+    * **Success Message (`Send invoice paid message`):** A comprehensive and visually formatted message is sent to the Slack channel upon successful deal update. This notification includes the amount, currency, customer details, PO number, and a transaction ID.
+    * **Error Messages:** Separate messages are sent for cases where a PO number is missing or if a matching deal could not be found, ensuring that exceptions are flagged for manual review.
+
+## Credentials Required
+
+This automation requires the following credentials to be configured in your n8n instance:
+
+* **Stripe API:** To set up the webhook that triggers the workflow on payment.
+* **Hubspot API:** To search for and update deals. This may require both an OAuth2 credential and a separate API key for searching.
+* **Slack API:** To send notifications and alerts to a designated Slack channel.
+
+---
+
+### Updated JSON File Content
+
+I have removed all sensitive information, including API keys, webhook IDs, and specific account details, to ensure this JSON is safe for public use.
+
