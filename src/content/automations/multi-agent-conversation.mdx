@@ -1,0 +1,83 @@
+---
+name: "Multi-Agent Conversation"
+category: "ai-intelligent"
+types:
+  - "chatbot-ai-support"
+  - "content-generation"
+workflowFile: "/workflows/multi-agent-conversation.json"
+nodes:
+  - "When chat message received"
+  - "Define Global Settings"
+  - "Define Agent Settings"
+  - "Extract mentions"
+  - "Loop Over Items"
+  - "First loop?"
+  - "Set user message as input"
+  - "Set last Assistant message as input"
+  - "AI Agent"
+  - "Simple Memory"
+  - "Set lastAssistantMessage"
+  - "Combine and format responses"
+  - "OpenRouter Chat Model"
+integrations: ['openrouter', 'chat messaging']
+triggerNode: "When chat message received"
+featured: false
+createdAt: 2025-09-21T18:59:00.000Z
+---
+
+## Purpose & Benefits
+
+This advanced workflow enables you to have dynamic conversations with multiple AI agents at once. Each agent can be configured with a unique name, system prompt, and even a different Large Language Model (LLM) from the OpenRouter service. This provides a scalable and flexible way to create chatbots with distinct personalities or specialized functions without the need for complex, hardcoded routing logic.
+
+### Key Benefits:
+* **Dynamic Personas:** Easily define a custom persona for each AI agent by editing a simple code node.
+* **Model Experimentation:** Test different LLMs side-by-side by assigning a unique model to each agent.
+* **Scalable Architecture:** Add or remove agents by simply updating a JSON object.
+* **Structured Conversation:** Agents' responses are combined into a single, well-formatted output, and a shared memory allows for multi-round conversations.
+
+---
+
+## Trigger
+
+### When chat message received
+
+The workflow is activated by an incoming chat message from a user. The workflow is designed to be triggered by a message sent to a chatbot interface.
+
+* **Logic:** The workflow includes a custom feature to extract `@mentions` from the user's message. If a user mentions a specific agent (e.g., `@Chad, what is your opinion?`), only that agent will be called to respond. If no agents are mentioned, the workflow will engage all agents in a randomized order.
+
+---
+
+## Workflow Steps & Logic
+
+The workflow's logic is highly dynamic, relying on configuration stored within its own nodes.
+
+1.  **Define Settings (`Define Global Settings` & `Define Agent Settings`):**
+    * The workflow begins by using two code nodes to define its core configuration.
+    * The **`Define Global Settings`** node stores information about the user and a general system message that will be seen by all agents.
+    * The **`Define Agent Settings`** node is where you define each agent, specifying their `name`, the `model` they should use (via OpenRouter), and a unique `systemMessage` that defines their persona.
+
+2.  **Mention Extraction (`Extract mentions`):**
+    * This custom JavaScript code node analyzes the user's message for `@mentions` of the agents you defined.
+    * It intelligently pulls the configurations for the mentioned agents and prepares them for the next step. If no agents were mentioned, it selects all of them in a random order.
+
+3.  **Agent Conversation Loop (`Loop Over Items`):**
+    * The `Loop Over Items` node iterates through the list of agents selected by the previous node, processing each one individually.
+    * Inside the loop, the **`AI Agent`** node dynamically sets up its system message and model based on the agent's configuration for that specific loop iteration. It uses the `OpenRouter Chat Model` node and the `Simple Memory` node to respond to the user's message.
+
+4.  **Response Aggregation (`Combine and format responses`):**
+    * After all selected agents have responded, the `Combine and format responses` code node collects each of their outputs.
+    * It then formats all the responses into a single, clean message, separated by a horizontal rule, ready to be sent back to the user.
+
+## Credentials Required
+
+This automation requires the following credentials to be configured in your n8n instance:
+
+* **Chat Messaging:** A credential for your chosen chat platform (e.g., Telegram, Slack, etc.) is required to use the chat trigger.
+* **OpenRouter API:** To connect to the OpenRouter service, which provides access to the different AI models used by each agent.
+
+---
+
+### Updated JSON File Content
+
+I have removed all sensitive information, including API keys, webhook IDs, and specific user details, to ensure this JSON is safe for public use.
+
