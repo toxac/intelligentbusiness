@@ -1,0 +1,92 @@
+---
+name: "ChatGPT Image Generation with Drive and Sheet"
+category: "ai-intelligent"
+types:
+  - "content-generation"
+  - "data-reporting"
+workflowFile: "/workflows/chatgpt-image-with-drive-sheet.json"
+nodes:
+  - "When chat message received"
+  - "HTTP Request"
+  - "Split Out"
+  - "Loop Over Items"
+  - "Edit Fields-file_name"
+  - "Convert to File"
+  - "Google Drive"
+  - "Edit Fields1"
+  - "Google Sheets"
+  - "Aggregate"
+  - "Google Sheets1"
+triggerNode: "When chat message received"
+featured: false
+createdAt: 2025-09-21T18:15:00.000Z
+---
+
+## Purpose & Benefits
+
+This automation provides a robust solution for generating images using an AI model (like ChatGPT Image 1, likely DALL-E) based on chat prompts, storing these images in Google Drive, and logging the generation details (including estimated costs) into a Google Sheet. This is highly beneficial for:
+
+* **Content Creators:** Quickly generate visual assets for blogs, social media, or marketing campaigns.
+* **Design Teams:** Iterate on visual concepts efficiently.
+* **Prototyping:** Generate mock-up images for new features or products.
+* **Tracking and Budgeting:** Monitor the usage and cost of AI image generation.
+
+## Trigger
+
+### When chat message received
+
+The workflow is triggered by an incoming chat message, which provides the prompt for the AI image generation.
+
+* **Trigger:** Chat Trigger (`@n8n/n8n-nodes-langchain.chatTrigger` node)
+* **Alternative Trigger:** You can also manually test the workflow using the "When clicking 'Test workflow'" node.
+* **Requirements:** A configured chat trigger endpoint within n8n.
+
+## Workflow Steps & Logic
+
+This workflow is quite comprehensive, involving multiple steps for image generation, file handling, and data logging.
+
+1.  **Generate Image via HTTP Request (`httpRequest` node):**
+    * Takes the `chatInput` (prompt) from the trigger node.
+    * Sends a POST request to the OpenAI image generation API (e.g., `https://api.openai.com/v1/images/generations`).
+    * Configures parameters such as `model` (e.g., `gpt-image-1`), `quality`, `size`, and `output_format`.
+    * The API returns base64 encoded image data.
+
+2.  **Split Out (`splitOut` node):**
+    * If the AI generates multiple images (controlled by the `n` parameter in the HTTP Request), this node splits the incoming items so each image can be processed individually.
+
+3.  **Loop Over Items (`splitInBatches` node):**
+    * This node ensures that each generated image is processed one by one, allowing subsequent steps to handle them individually.
+
+4.  **Edit Fields-file\_name (`set` node):**
+    * Generates a unique filename using the current timestamp (`$now.format("yyyyMMddHHmmSSS")`).
+    * Preserves the `b64_json` data for the next step.
+
+5.  **Convert to File (`convertToFile` node):**
+    * Converts the base64 encoded image data (`b64_json`) into a binary file format, ready for storage.
+    * Uses the `file_name` generated in the previous step.
+
+6.  **Google Drive (`googleDrive` node):**
+    * Uploads the generated image file to a specified folder in Google Drive.
+    * The file is named dynamically using the timestamp and the creation date from the AI response.
+
+7.  **Edit Fields1 (`set` node):**
+    * Captures relevant information after uploading to Google Drive, such as `id`, `webViewLink` (direct link to the image), `thumbnailLink`, and the `file_name`. This prepares the data for logging.
+
+8.  **Google Sheets (`googleSheets` node):**
+    * Appends a new row to a Google Sheet (acting as a log of generated images).
+    * **Data Logged:** The image's direct link (`webViewLink`), a clickable thumbnail link (`IMAGE("thumbnailLink")`), and the original prompt (`chatInput`).
+
+9.  **Aggregate (`aggregate` node):**
+    * This node aggregates data, likely used here to ensure all items are collected before proceeding to the cost logging, especially if multiple images were generated.
+
+10. **Google Sheets1 (`googleSheets` node):**
+    * Appends another row to a different sheet (or a different tab in the same sheet) to log the estimated cost and usage of the AI image generation.
+    * **Data Logged:** `prompt`, `datetime`, `input token`, `output token`, `input estimated price`, `output estimated price`, `total estimated price`. This is derived from the `usage` data returned by the OpenAI API.
+
+## Credentials Required
+
+This automation requires the following credentials to be configured in your n8n instance:
+
+* **OpenAI API:** For interacting with the ChatGPT image generation service.
+* **Google Drive OAuth2 API:** To upload the generated images.
+* **Google Sheets OAuth2 API:** To log the image details and usage data.
