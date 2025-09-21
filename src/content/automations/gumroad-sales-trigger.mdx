@@ -1,0 +1,59 @@
+---
+name: "Gumroad Sale Trigger"
+category: "sales-marketing"
+types:
+  - "post-purchase"
+  - "customer-communication"
+  - "data-synchronization"
+workflowFile: "/workflows/gumroad-sale-trigger.json"
+nodes:
+  - "Gumroad Sale Trigger"
+  - "add subscriber to MailerLite"
+  - "Assign to group"
+  - "append row in CRM"
+triggerNode: "Gumroad Sale Trigger"
+featured: false
+createdAt: 2025-09-21T18:11:29.000Z
+---
+
+## Purpose & Benefits
+
+This automation is designed for businesses and creators who sell digital products on Gumroad. It automatically captures new customer data after a sale and seamlessly adds it to your email list and CRM. This allows you to immediately begin nurturing new customers with targeted email sequences and maintain an organized database of your buyers.
+
+## Trigger
+
+### Gumroad Sale Trigger
+
+This workflow is initiated by a new sale on your Gumroad account.
+
+* **Trigger:** New Gumroad Sale (`gumroadTrigger` node)
+* **Requirements:**
+    * A [Gumroad](https://gumroad.com/) account with a product listed.
+    * You will need to create a new application and paste your access token into the Gumroad credentials within n8n.
+
+## Workflow Steps & Logic
+
+The workflow follows a sequential process to process the new customer data.
+
+1.  **Add Subscriber to MailerLite (`mailerLite` node):**
+    * The workflow first captures the email and country of the customer from the Gumroad sale data.
+    * It uses this information to add a new subscriber to your MailerLite account.
+    * This is the initial step for all email communication.
+
+2.  **Assign to Group (`httpRequest` node):**
+    * After the subscriber is created, a subsequent `httpRequest` node is used to assign that new subscriber to a specific group within MailerLite.
+    * This is a crucial step for setting up automated email sequences. You can configure a MailerLite automation to trigger a specific email campaign whenever a new subscriber is added to this group.
+    * **Logic:** The node uses the MailerLite API endpoint to add the new subscriber to a pre-defined group ID. You'll need to manually get this group ID from your MailerLite account.
+
+3.  **Append Row in CRM (`googleSheets` node):**
+    * Finally, the customer and sale details are appended as a new row in a Google Sheets document, which serves as your CRM.
+    * **Data Captured:** `date`, `product name`, `email`, and `country`.
+    * This step ensures you have a central, organized log of all your sales data.
+
+## Credentials Required
+
+This automation requires the following credentials to be configured in your n8n instance:
+
+* **Gumroad API:** To listen for the `sale` trigger.
+* **MailerLite API:** To manage subscribers and groups.
+* **Google Sheets OAuth2 API:** To write data to your CRM spreadsheet.
