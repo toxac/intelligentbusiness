@@ -1,0 +1,59 @@
+---
+name: "Typeform Feedback Workflow"
+category: "customer-service"
+types:
+  - "customer-feedback"
+workflowFile: "/workflows/typeform-feedback-route.json"
+nodes:
+  - "Typeform Trigger"
+  - "Set"
+  - "IF"
+  - "Google Sheets"
+  - "Google Sheets1"
+integrations: ['typeform', 'google sheets']
+triggerNode: "Typeform Trigger"
+featured: false
+createdAt: 2025-09-21T21:05:01.000Z
+---
+
+## Purpose & Benefits
+
+This automation streamlines the process of collecting and managing feedback from a Typeform submission. It automatically routes responses based on a numerical rating, separating positive and negative feedback into different tabs in a Google Sheet. This saves valuable time on manual data entry and provides an organized, centralized view of customer sentiment.
+
+## Trigger
+
+### Typeform Trigger
+
+The workflow is activated instantly whenever a new response is submitted to a specific Typeform survey.
+
+* **Trigger:** New Typeform submission.
+
+## Workflow Steps & Logic
+
+The workflow follows a straightforward path: capture the data, filter it based on a condition, and then route it to the appropriate destination.
+
+1.  **Capture Typeform Data (`Set` node):**
+    * The workflow first captures the key data from the Typeform submission, specifically the `usefulness` rating and the user's `opinion` on the course.
+
+2.  **Conditional Routing (`IF` node):**
+    * This node acts as a filter, checking if the `usefulness` rating is greater than or equal to 3.
+    * If the condition is `true`, the feedback is considered positive and is sent down the top path.
+    * If the condition is `false`, the feedback is considered negative and is sent down the bottom path.
+
+3.  **Log to Google Sheets (`Google Sheets` nodes):**
+    * The **positive feedback** is appended to a sheet named `positive_feedback`.
+    * The **negative feedback** is appended to a separate sheet named `negative_feedback`. This ensures that all responses are automatically categorized and stored in a logical, easy-to-review format.
+
+## Credentials Required
+
+This automation requires the following credentials to be configured in your n8n instance:
+
+* **Typeform API:** To receive real-time submissions from your Typeform survey.
+* **Google Sheets OAuth2 API:** To connect to and append data to your Google Sheets document.
+
+---
+
+### Updated JSON File Content
+
+I have removed all sensitive information, including API keys, webhook IDs, form IDs, and sheet IDs, to ensure this JSON is safe for public use.
+
