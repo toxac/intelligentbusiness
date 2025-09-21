@@ -1,11 +1,250 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Ai for Business" description="AI for business">
+  <section class="hero-pattern pt-32 pb-20">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+      <div class="md:w-1/2 mb-10 md:mb-0">
+        <h1 class="text-4xl md:text-5xl font-bold text-dark mb-6">
+          Transform Your Business with <span class="text-primary"
+            >AI Automation</span>
+        </h1>
+        <p class="text-xl text-gray-600 mb-8">
+          Streamline operations, reduce costs, and boost productivity with our
+          powerful AI-powered workflow automations designed for modern
+          businesses.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href="/automations"
+            class="bg-primary text-white px-6 py-3 rounded-lg text-center hover:bg-secondary transition font-medium"
+            >Explore Automations</a
+          >
+          <a
+            href="#demo"
+            class="bg-white text-primary border border-primary px-6 py-3 rounded-lg text-center hover:bg-gray-50 transition font-medium"
+            >Request Demo</a
+          >
+        </div>
+      </div>
+      <div class="md:w-1/2 flex justify-center">
+        <div class="relative">
+          <div
+            class="w-80 h-80 gradient-bg rounded-full flex items-center justify-center animate-float"
+          >
+            <i class="fas fa-brain text-white text-7xl"></i>
+          </div>
+          <div
+            class="absolute -top-4 -left-4 w-40 h-40 bg-white rounded-xl shadow-lg p-4 card-hover"
+          >
+            <i class="fas fa-chart-line text-primary text-2xl mb-2"></i>
+            <h3 class="font-semibold">Sales Boost</h3>
+            <p class="text-sm text-gray-600">Increase conversion rates</p>
+          </div>
+          <div
+            class="absolute -bottom-4 -right-4 w-40 h-40 bg-white rounded-xl shadow-lg p-4 card-hover"
+          >
+            <i class="fas fa-clock text-primary text-2xl mb-2"></i>
+            <h3 class="font-semibold">Time Saved</h3>
+            <p class="text-sm text-gray-600">Automate repetitive tasks</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div class="p-6">
+          <div class="text-4xl font-bold text-primary mb-2">89%</div>
+          <p class="text-gray-600">
+            of businesses report increased efficiency after implementing AI
+            automation
+          </p>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl font-bold text-primary mb-2">42%</div>
+          <p class="text-gray-600">
+            reduction in operational costs with workflow automation
+          </p>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl font-bold text-primary mb-2">5.2x</div>
+          <p class="text-gray-600">
+            faster process completion with AI-powered automations
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-dark mb-4">
+          Powerful AI Automation Features
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Our platform offers cutting-edge AI capabilities to transform your
+          business processes
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-xl shadow-md card-hover">
+          <div
+            class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center mb-6"
+          >
+            <i class="fas fa-robot text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">
+            Intelligent Process Automation
+          </h3>
+          <p class="text-gray-600">
+            AI-powered workflows that learn and adapt to your business processes
+            for maximum efficiency.
+          </p>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-md card-hover">
+          <div
+            class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center mb-6"
+          >
+            <i class="fas fa-database text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Data Integration</h3>
+          <p class="text-gray-600">
+            Seamlessly connect with your existing tools and systems for unified
+            data processing.
+          </p>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-md card-hover">
+          <div
+            class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center mb-6"
+          >
+            <i class="fas fa-chart-pie text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Analytics & Insights</h3>
+          <p class="text-gray-600">
+            Gain valuable insights from your automated processes with advanced
+            analytics and reporting.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section id="benefits" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-dark mb-4">
+          Why Choose AI Automation?
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Transform your business with these key benefits
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div>
+          <div class="flex items-start mb-8">
+            <div
+              class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center mr-6"
+            >
+              <i class="fas fa-money-bill-wave text-white"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">Cost Reduction</h3>
+              <p class="text-gray-600">
+                Automate repetitive tasks to significantly reduce operational
+                costs and manual labor expenses.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-start mb-8">
+            <div
+              class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center mr-6"
+            >
+              <i class="fas fa-bolt text-white"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">Increased Efficiency</h3>
+              <p class="text-gray-600">
+                Complete processes 5x faster with AI-powered automation that
+                works 24/7 without breaks.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <div
+              class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center mr-6"
+            >
+              <i class="fas fa-shield-alt text-white"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">Error Reduction</h3>
+              <p class="text-gray-600">
+                Minimize human errors with consistent, accurate automated
+                processes that follow rules precisely.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <img
+            src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
+            alt="AI Automation Benefits"
+            class="rounded-xl shadow-md"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 gradient-bg">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-white mb-6">
+        Ready to Transform Your Business?
+      </h2>
+      <p class="text-xl text-white opacity-90 max-w-2xl mx-auto mb-8">
+        Explore our library of pre-built automations or request a custom
+        solution tailored to your specific needs.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/automations"
+          class="bg-white text-primary px-6 py-3 rounded-lg hover:bg-gray-100 transition font-medium"
+          >Explore Automations</a
+        >
+        <a
+          href="#demo"
+          class="bg-transparent text-white border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-primary transition font-medium"
+          >Request Demo</a
+        >
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .gradient-bg {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  }
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+  .hero-pattern {
+    background-color: #f9fafb;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+</style>
