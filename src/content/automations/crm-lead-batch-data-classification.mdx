@@ -1,0 +1,75 @@
+---
+name: "Lead Qualification with BatchData"
+category: "sales-marketing"
+types:
+  - "lead-management"
+  - "data-synchronization"
+  - "alerts-notifications"
+workflowFile: "/workflows/crm-lead-batch-data-classification.json"
+nodes:
+  - "CRM New Lead Webhook"
+  - "Fetch Lead Data"
+  - "BatchData Property Lookup"
+  - "Score And Qualify Lead"
+  - "Update CRM Lead"
+  - "Is High-Value Lead?"
+  - "Create Immediate Follow-up Task"
+  - "Send Slack Notification"
+integrations: ['crm', 'batchdata', 'slack']
+triggerNode: "CRM New Lead Webhook"
+featured: false
+createdAt: 2025-09-21T21:00:18.000Z
+---
+
+## Purpose & Benefits
+
+This workflow automatically qualifies and enriches new leads from your CRM using a third-party property data service, **BatchData**. When a new lead is created, the workflow retrieves property information, scores the lead based on a custom algorithm, and updates your CRM with the enriched data and a qualification status. This automation is invaluable for sales teams, as it ensures immediate focus on high-value leads while reducing manual research time.
+
+---
+
+## Trigger
+
+### CRM New Lead Webhook
+
+The workflow is activated instantly when a new lead is added to your CRM. The webhook is configured to listen for a specific URL, and your CRM must be set up to send a notification (payload) to this endpoint upon lead creation.
+
+* **Expected Payload:** The webhook expects a JSON payload containing the `leadId`, `crmApiUrl`, and the lead's address information (`address`, `city`, `state`, `zipcode`).
+
+---
+
+## Workflow Steps & Logic
+
+This workflow performs several crucial steps to process and qualify new leads.
+
+1.  **Fetch & Enrich Lead Data:**
+    * The workflow first uses the `leadId` from the webhook to fetch comprehensive lead data from your CRM's API.
+    * It then uses the address information to perform a **property lookup** via the **BatchData API**. This enriches the lead data with valuable property characteristics like estimated value, size, age, and ownership status.
+
+2.  **Score and Qualify Lead (`code` node):**
+    * A custom JavaScript code node, `Score And Qualify Lead`, acts as the core of the workflow. It implements a sophisticated algorithm to score the lead based on the enriched property data.
+    * **Scoring Factors:** Points are awarded for property value, square footage, property age, ownership status (e.g., investment property), and lot size.
+    * **Qualification Thresholds:** The total score determines the lead's final status: **`high-value`** (50+ points), **`qualified`** (30-49 points), **`potential`** (15-29 points), or **`unverified`** if no data is found.
+
+3.  **Update CRM Lead (`httpRequest` node):**
+    * The workflow uses an HTTP request to send the enriched data back to your CRM.
+    * This update includes the new lead score, qualification status, and specific property details, providing your sales team with all the necessary information in one place.
+
+4.  **Conditional Routing (`if` node):**
+    * A conditional `if` node, `Is High-Value Lead?`, checks the lead's qualification status.
+    * **High-Value Leads (TRUE Path):** If the lead is classified as `high-value`, the workflow creates an urgent follow-up task in the CRM and assigns it to a senior agent for immediate action.
+    * **Standard Leads (FALSE Path):** For other leads, the workflow sends a simple notification to a designated Slack channel, keeping the team informed without creating an urgent task.
+
+## Credentials Required
+
+This automation requires the following credentials to be configured in your n8n instance:
+
+* **CRM API:** Credentials with read and write access to your CRM's API, used for fetching and updating lead data.
+* **BatchData API:** An API key for BatchData's Property Lookup service.
+* **Slack:** Credentials to send alerts to a specific Slack channel.
+
+---
+
+### Updated JSON File Content
+
+I have removed all sensitive information, including API keys, webhook IDs, and specific channel names, from the JSON file to ensure it is safe for public use.
+
