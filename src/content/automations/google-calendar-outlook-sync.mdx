@@ -1,0 +1,65 @@
+---
+name: "Google Calendar to Outlook"
+category: "operations-it"
+types:
+  - "internal-workflow"
+  - "data-synchronization"
+workflowFile: "/workflows/google-calendar-outlook-sync.json"
+nodes:
+  - "Incoming Event Trigger"
+  - "Create Outlook Event"
+  - "Cancel Event Trigger"
+  - "Get Event to Cancel"
+  - "Delete Event"
+  - "Merge"
+  - "Send E-mail with details"
+integrations: ['google calendar', 'microsoft outlook']
+triggerNode: "Incoming Event Trigger"
+featured: false
+createdAt: 2025-09-21T18:31:31.000Z
+---
+
+## Purpose & Benefits
+
+This automation is designed to synchronize events between a Google Calendar and an Outlook Calendar. It's a highly effective solution for individuals who use both calendars for personal and professional life, helping to prevent double bookings and ensuring their work colleagues can see their true availability. The workflow handles both new event creation and event cancellations, ensuring your calendars are always up to date.
+
+## Trigger
+
+This workflow is unique because it uses two separate triggers to handle different event actions.
+
+* **Incoming Event Trigger:** This is the primary trigger that fires whenever a **new event is created** in the designated Google Calendar.
+* **Cancel Event Trigger:** This secondary trigger fires when an event is **cancelled** in the same Google Calendar.
+
+Both triggers are set to poll every minute, providing near real-time synchronization.
+
+## Workflow Steps & Logic
+
+The workflow branches into two distinct paths to handle new events and cancellations.
+
+### Path 1: Create New Event
+This path is initiated by the `Incoming Event Trigger`.
+
+1.  **Incoming Event Trigger:** A new event is created in Google Calendar.
+2.  **Create Outlook Event:** The workflow takes the details from the new Google Calendar event (subject, start time, end time, and description) and creates a corresponding event in the specified Outlook Calendar. A key piece of logic here is that the subject is prepended with "From private:" to make the origin of the event clear.
+
+### Path 2: Cancel Existing Event
+This path is initiated by the `Cancel Event Trigger`.
+
+1.  **Cancel Event Trigger:** An event is cancelled in Google Calendar.
+2.  **Get Event to Cancel:** The workflow searches the Outlook Calendar to find the event that was just cancelled. It uses the `summary` (subject) of the Google event to match the corresponding Outlook event.
+3.  **Delete Event:** Once the matching event is found, it is automatically deleted from the Outlook Calendar.
+4.  **Send E-mail with details:** An optional final step in this branch is to send an email notification confirming that the event has been successfully cancelled.
+
+## Credentials Required
+
+This automation requires the following credentials to be configured in your n8n instance:
+
+* **Google Calendar OAuth2 API:** To listen for and retrieve event data from your Google Calendar.
+* **Microsoft Outlook OAuth2 API:** To create, find, and delete events, as well as send email notifications in your Outlook account.
+
+---
+
+### Updated JSON File Content
+
+I have removed all sensitive information, including API keys, account IDs, email addresses, and specific calendar IDs, to ensure this JSON is safe for public use.
+
