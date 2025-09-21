@@ -1,0 +1,103 @@
+---
+name: "Automated Social Media Content Factory"
+category: "ai-intelligent"
+types:
+  - "content-generation"
+  - "alerts-notifications"
+workflowFile: "/workflows/social-media-creator.json"
+nodes:
+  - "When chat message received"
+  - "When Executed by Another Workflow"
+  - "Social Media Schema"
+  - "Social Media System Prompt"
+  - "Parse Schema"
+  - "Parse System Prompt"
+  - "Merge Prompts and Schema"
+  - "Compose Prompt & Schema"
+  - "Social Media Content Creator"
+  - "pollinations.ai1"
+  - "Save Image to imgbb.com"
+  - "Save Image to Google Drive"
+  - "Social Content"
+  - "Merge"
+  - "Prepare Social Media Email Contents"
+  - "Gmail"
+  - "Social Media Publishing Router"
+  - "X Post"
+  - "Instagram Image"
+  - "Instragram Post"
+  - "Facebook Post"
+  - "LinkedIn Post"
+  - "Implement Threads Here"
+  - "Implement YouTube Shorts Here"
+integrations: ['openai', 'google docs', 'google drive', 'imgbb', 'gmail', 'telegram', 'twitter', 'instagram', 'facebook', 'linkedin', 'threads', 'youtube']
+triggerNode: "When chat message received"
+featured: false
+createdAt: 2025-09-21T18:50:38.000Z
+---
+
+## Purpose & Benefits
+
+This advanced automation functions as a full-fledged social media content creation and publishing factory. It uses AI to generate platform-specific content and images based on a user prompt, manages content via a centralized approval system, and then automatically publishes it to multiple social media channels. The system's modular design, with prompts and schemas stored in Google Docs, allows for a **flexible content strategy** and **consistent brand voice** across all platforms.
+
+### Key Features:
+* **External Prompt Composition:** System prompts and output schemas are stored in Google Docs, allowing non-developers to easily update content guidelines without changing workflow code.
+* **AI-Driven Content Creation:** A dedicated AI agent generates tailored content for platforms like X, Instagram, Facebook, and LinkedIn.
+* **Dynamic Image Generation:** The workflow generates a new image for each post based on an AI-generated prompt.
+* **Multi-Platform Publishing:** Content is automatically routed to the correct social media API for publishing.
+* **Approval System:** An optional email approval step allows for human review of content before it is published.
+* **Content Archiving:** All generated content and images are automatically saved to cloud services for future use and compliance.
+
+---
+
+## Trigger
+
+This workflow has a dual-trigger mechanism that supports two distinct flows:
+
+1.  **Initial Content Generation (`When chat message received`):** This is the primary trigger. A user sends a prompt via a chat message, initiating the content creation process.
+2.  **Publishing Flow (`When Executed by Another Workflow`):** This trigger is used to begin the publishing phase after a post has been created and optionally approved via email.
+
+---
+
+## Workflow Steps & Logic
+
+The workflow is a complex factory with several logical stages.
+
+### 1. Content and Schema Preparation
+The workflow first retrieves its instructions from external sources:
+* **Social Media Schema:** The workflow fetches a Google Doc containing a dynamic JSON schema for each social media platform.
+* **Social Media System Prompt:** It retrieves another Google Doc that defines the AI's role, rules, and style guidelines for each platform.
+* These components are then parsed and merged to create a comprehensive prompt for the AI agent.
+
+### 2. AI-Powered Content Creation
+* **Social Media Content Creator:** An AI agent receives the user's prompt and the merged prompt/schema. It generates the social media content, including a post, hashtags, and an image suggestion, all formatted to the correct JSON schema.
+* **Image Creation:** The workflow uses a service like Pollinations.ai to dynamically create an image based on the AI's image suggestion. This image is then uploaded to a service like imgbb and Google Drive for archiving.
+
+### 3. Content Approval
+* **Gmail User for Approval:** The workflow can send an HTML-formatted email to a designated user for review. The email contains a summary of the generated content and image. This is a "send and wait" node, pausing the workflow until a response is received.
+* **Is Approved?:** An `if` node checks the response from the approval email. If the content is approved, the workflow proceeds to the next stage; otherwise, it stops.
+
+### 4. Publishing & Routing
+* **Social Media Publishing Router:** This is a `switch` node that acts as a central router. Based on the platform requested in the initial user prompt (e.g., `xtwitter`, `instagram`), it sends the approved content and image to the correct social media publishing node.
+* **Platform-Specific Posts:** The content is then published to the chosen social media platform via a dedicated node (`X Post`, `Instragram Post`, `Facebook Post`, `LinkedIn Post`, etc.). The workflow uses a variety of APIs to handle image and text uploads for each platform.
+
+## Credentials Required
+
+This automation requires numerous credentials to be configured in your n8n instance:
+
+* **OpenAI API:** To use the AI chat model for content generation.
+* **Google Docs OAuth2 API:** To retrieve system prompts and schemas from Google Docs.
+* **Google Drive OAuth2 API:** To archive generated images and post content.
+* **imgbb API:** To temporarily host images for social media posts.
+* **Gmail OAuth2 API:** For the content approval and reporting functionality.
+* **Telegram API:** For optional status notifications.
+* **Facebook Graph API:** To post to Facebook and Instagram.
+* **Twitter OAuth2 API:** To post to X (Twitter).
+* **LinkedIn OAuth2 API:** To post to LinkedIn.
+
+---
+
+### Updated JSON File Content
+
+I have removed all specific API keys, webhook IDs, account IDs, and specific URLs from the JSON file to ensure it's safe for public use.
+

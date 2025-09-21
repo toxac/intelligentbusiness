@@ -1,0 +1,72 @@
+---
+name: "Notion to LinkedIn"
+category: "sales-marketing"
+types:
+  - "content-social-media"
+workflowFile: "/workflows/notion-linkedin-pub.json"
+nodes:
+  - "Schedule Trigger"
+  - "Filter the table for the day's post"
+  - "Fetch the content on the page"
+  - "Aggregate the Notion blocks"
+  - "Format the post"
+  - "Download image"
+  - "Merge"
+  - "Publish on LinkedIn"
+  - "Update post status in notion database"
+integrations: ['notion', 'linkedin']
+triggerNode: "Schedule Trigger"
+featured: false
+createdAt: 2025-09-21T18:55:11.000Z
+---
+
+## Purpose & Benefits
+
+This automation is designed to streamline your social media content workflow by publishing content directly from a Notion database to LinkedIn. The workflow automatically checks your Notion database for a post scheduled for the current day, formats the content, and publishes it, ensuring a consistent and hands-off publishing schedule.
+
+## Trigger
+
+### Schedule Trigger
+
+This workflow is initiated by a schedule trigger, designed to run at a specific time each day.
+
+* **Schedule:** The workflow runs daily at 15:00 (3 PM). You can easily adjust this time in the trigger node's settings.
+
+## Workflow Steps & Logic
+
+The workflow follows a clear, sequential process to identify, prepare, and publish your content.
+
+1.  **Find the Day's Post (`notion` node):**
+    * The workflow connects to your specified Notion database and filters the pages to find any entry where the `Date` property matches the current day. This ensures it only processes content that is ready to be published.
+
+2.  **Fetch and Aggregate Content (`notion` & `aggregate` nodes):**
+    * Once the correct page is found, the workflow fetches the content blocks from that page.
+    * The `Aggregate the Notion blocks` node then combines these blocks into a single piece of content, including both text and any images.
+
+3.  **Format the Post (`code` node):**
+    * A custom code node is used to format the raw text from Notion into a clean, readable post suitable for LinkedIn. It handles line breaks and other formatting to ensure the final output looks professional.
+
+4.  **Download Image (`httpRequest` node):**
+    * If the Notion page contains an image, this node downloads it so it can be included in the LinkedIn post.
+
+5.  **Publish to LinkedIn (`linkedIn` node):**
+    * The `Merge` node combines the formatted text and the downloaded image into a single item.
+    * The `Publish on LinkedIn` node then takes this combined data and creates a new post on your specified personal or company LinkedIn profile.
+
+6.  **Update Notion Status (`notion` node):**
+    * Finally, the workflow updates the original page in your Notion database. It changes the `Status` property to "Published," providing a clear record that the post has been successfully sent.
+
+## Credentials Required
+
+This automation requires the following credentials to be configured in your n8n instance:
+
+* **Notion API:** To connect to your Notion database to read and update pages.
+* **LinkedIn OAuth2 API:** To authenticate and publish posts to your LinkedIn profile.
+
+***
+
+### Updated JSON File Content
+
+I have removed all sensitive information, including API keys, account IDs, and specific URLs, from the JSON file to ensure it's safe for public use.
+
+
