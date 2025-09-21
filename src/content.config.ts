@@ -41,7 +41,8 @@ const automationsCollection = defineCollection({
     nodes: z.string().array(),
     triggerNode:z.string(),
     featured: z.boolean().default(false),
-    createdAt: z.date().optional()
+    createdAt: z.date().optional(),
+    integrations: z.string().array().optional(),
   })
 });
 

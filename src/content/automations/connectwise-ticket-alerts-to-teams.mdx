@@ -1,0 +1,84 @@
+---
+name: "Connectwise Ticket Alerts to Teams"
+category: "operations-it"
+types:
+  - "system-monitoring"
+  - "alerts-notifications"
+workflowFile: "/workflows/new-ticket-alerts-to-teams.json"
+nodes:
+  - "Schedule Trigger"
+  - "Get New Tickets"
+  - "Add Filterable Parameter"
+  - "Query Database"
+  - "Filter Out Tickets that have already been sent"
+  - "Combine like Companies"
+  - "Teams to Dispatch"
+  - "Log in Redis"
+triggerNode: "Schedule Trigger"
+featured: false
+createdAt: 2025-09-21T18:21:31.000Z
+---
+
+## Purpose & Benefits
+
+This automation is designed for IT service providers who use ConnectWise. Its purpose is to automatically check for new tickets and send immediate alerts to a Microsoft Teams channel, ensuring the dispatch team is always aware of new work. The workflow is intelligent, using a Redis database to prevent duplicate alerts for the same ticket. This provides:
+
+* **Real-time Visibility:** The dispatch team receives alerts as soon as new tickets are logged.
+* **Reduced Noise:** By filtering out previously processed tickets, the channel remains uncluttered with redundant messages.
+* **Improved Efficiency:** Tickets for the same company are combined into a single, clean alert, streamlining the assignment process.
+
+---
+
+## Trigger
+
+### Schedule Trigger
+
+This workflow is initiated on a repeating schedule to continuously monitor for new tickets.
+
+* **Trigger:** The workflow runs automatically at regular intervals.
+* **Schedule:** The cron expression `*/1 8-16 * * 1-5` means the workflow runs every minute between 8 AM and 4 PM, Monday through Friday, aligning with standard business hours.
+
+---
+
+## Workflow Steps & Logic
+
+The workflow follows a series of steps to fetch, filter, and alert on new tickets.
+
+1.  **Get New Tickets (`httpRequest` node):**
+    * This node sends an HTTP request to the ConnectWise API to retrieve all tickets that meet specific conditions.
+    * **Logic:** It queries for tickets with a status of "New," "New (email)," or "New (portal)" and from a specified set of boards, while also ensuring they are not sub-tickets (`parentTicketId=null`).
+
+2.  **Add Filterable Parameter & Query Database (`code` and `redis` nodes):**
+    * The `Add Filterable Parameter` node prepares the data by extracting the ticket ID.
+    * The `Query Database` node then checks if a ticket with that ID already exists in a Redis database.
+
+3.  **Filter Out Tickets that have already been sent (`merge` node):**
+    * This critical step compares the list of newly retrieved tickets with the results from the Redis database.
+    * **Logic:** Using `joinMode: keepNonMatches` and `outputDataFrom: input1`, it only allows tickets that were **not** found in Redis to proceed to the next steps.
+
+4.  **Log in Redis (`redis` node):**
+    * For every new ticket that passes the filter, this node logs its ID into the Redis database. This ensures that the next time the workflow runs, this ticket will be filtered out, preventing a duplicate alert.
+
+5.  **Combine like Companies (`code` node):**
+    * This custom JavaScript node is used to group multiple tickets that belong to the same company.
+    * **Logic:** It iterates through the tickets and aggregates them based on a combined key (e.g., `siteName` and `companyName`), creating a single object that contains all the relevant tickets for that company.
+
+6.  **Teams to Dispatch (`microsoftTeams` node):**
+    * The final step sends a formatted message to a Microsoft Teams channel.
+    * The message includes the ticket type and a list of all relevant tickets for a given company, providing a clean and organized alert for the dispatch team.
+
+---
+
+## Credentials Required
+
+This automation requires the following credentials to be configured in your n8n instance:
+
+* **ConnectWise (HTTP Header Auth):** To authenticate with the ConnectWise API to get the tickets.
+* **Redis:** To connect to your Redis database for logging and filtering ticket IDs.
+* **Microsoft Teams OAuth2 API:** To send messages to the designated Teams channel.
+
+### Updated JSON File Content
+
+I have removed all sensitive information, including API keys, account IDs, and specific URLs, from the JSON file to ensure it's safe for public use.
+
+
