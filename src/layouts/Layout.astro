@@ -20,8 +20,10 @@ const {title, description} = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
-		<Navbar />
+	<body class="w-full min-h-screen">
+		<div class="navbar bg-base-100 shadow-sm mb-10">
+			<a class="btn btn-ghost text-xl" href="/">Intelligent Business</a>
+		</div>
 		<slot />
 	</body>
 </html>
