@@ -2,6 +2,54 @@
 @plugin "@tailwindcss/typography";
 @plugin "daisyui";
 
+/* Font face declarations - keep these first */
+@font-face {
+  font-family: 'GeneralSans-Variable';
+  src: url('/fonts/GeneralSans-Variable.woff2') format('woff2');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GeneralSans-Variable';
+  src: url('/fonts/GeneralSans-VariableItalic.woff2') format('woff2');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Switzer-Variable';
+  src: url('/fonts/Switzer-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Switzer-Variable';
+  src: url('/fonts/Switzer-VariableItalic.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+}
+
+@layer base {
+  /* Define CSS variables */
+  :root {
+    --font-heading: 'GeneralSans-Variable', system-ui, sans-serif;
+    --font-body: 'Switzer-Variable', system-ui, sans-serif;
+  }
+   /* Base styles */
+  html {
+    font-family: var(--font-body);
+    font-variation-settings: "wght" 400;
+    @apply text-base text-base-content bg-base-100;
+    scroll-behavior: smooth;
+  }
+}
+
 
 @plugin "daisyui/theme" {
   name: "lofi";
