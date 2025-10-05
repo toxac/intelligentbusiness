@@ -1,201 +1,459 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout title="Ai for Business" description="AI for business">
+<Layout title="AI for Business Transformation" description="Transform your business with AI that delivers real value">
 
+  <!-- Hero Section -->
   <section class="pt-32 pb-20 section-pattern">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-4xl md:text-5xl font-bold text-dark mb-6">AI Transformation: <span class="text-primary">Beyond the Hype</span></h1>
-                <p class="text-xl text-gray-600 mb-8">A Leader's Guide to Navigating the Real Opportunities and Risks</p>
-                <a href="/automations" class="bg-primary text-white px-8 py-4 rounded-lg hover:bg-secondary transition font-medium text-lg shadow-lg">Explore Business Workflows</a>
-            </div>
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto text-center">
+        <h1 class="text-5xl md:text-6xl font-bold text-dark mb-6 leading-tight">
+          AI That Transforms <span class="text-primary">What Customers Experience</span>, Not Just How You Work
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-700 mb-4 max-w-3xl mx-auto">
+          Most companies automate workflows. Smart companies reimagine customer value.
+        </p>
+        <p class="text-lg text-gray-600 mb-10 max-w-3xl mx-auto">
+          Go beyond ChatGPT subscriptions and workflow optimization. Build AI capabilities that create measurable value for customers and bottom-line impact for your business.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/assessment" class="bg-primary text-white px-8 py-4 rounded-lg hover:bg-secondary transition font-semibold text-lg shadow-lg">
+            Take the Free Readiness Assessment
+          </a>
+          <a href="/webinar" class="border-2 border-primary text-primary px-8 py-4 rounded-lg hover:bg-primary hover:text-white transition font-semibold text-lg">
+            Join Free Intro Webinar
+          </a>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- The Hook Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="max-w-3xl mx-auto">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-dark mb-4">The AI Revolution is Here – Is Your Business Ready?</h2>
-                    <p class="text-lg text-gray-600">We've reached a tipping point. This isn't about the future; this is about what's possible right now.</p>
-                </div>
-                
-                <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-primary mb-8">
-                    <p class="text-blue-800"><span class="font-bold">The Reality:</span> For every company leveraging AI to reinvent itself, there are a dozen others stuck providing ChatGPT subscriptions and wondering where the real value is.</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <div class="text-blue-500 text-2xl mb-2">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">Customer Service Transformation</h3>
-                        <p class="text-gray-600">AI analyzes customer tone, history, and emotions to provide agents with perfect solutions, boosting satisfaction by 30%+.</p>
-                    </div>
-                    
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <div class="text-blue-500 text-2xl mb-2">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">Product Development</h3>
-                        <p class="text-gray-600">AI analyzes thousands of data points to identify unmet needs and generate new product concepts customers want.</p>
-                    </div>
-                </div>
-                
-                <div class="text-center">
-                    <a href="/automations" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary transition font-medium">Discover AI Workflows</a>
-                </div>
-            </div>
+  <!-- The Reality Check Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-gradient-to-r from-red-50 to-orange-50 p-8 rounded-xl border-l-4 border-red-500 mb-12">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">The Hard Truth About AI Transformation</h2>
+          <p class="text-lg text-gray-800 mb-4">
+            <strong>The Gap:</strong> For every company using AI to reinvent customer experience and create new value, there are dozens stuck providing ChatGPT licenses and wondering where the ROI is.
+          </p>
+          <p class="text-gray-700">
+            Real AI transformation isn't about automating existing processes—it's about fundamentally reimagining how you deliver value to customers and capture it for your business.
+          </p>
         </div>
-    </section>
 
-    <!-- Challenges Section -->
-    <section class="py-16 section-pattern">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-dark mb-4">The Core Business Challenges</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">What really stands in the way of successful AI implementation</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
-                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-shield-alt text-red-600 text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Security & Compliance</h3>
-                    <p class="text-gray-600">Protecting sensitive data and ensuring regulatory compliance with GDPR, HIPAA, and EU AI Act requirements.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-database text-blue-600 text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Infrastructure & Data</h3>
-                    <p class="text-gray-600">Overcoming messy, siloed data that undermines AI effectiveness and building the right technical foundation.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
-                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-chart-line text-green-600 text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">ROI & Cost Management</h3>
-                    <p class="text-gray-600">Avoiding unpredictable costs and demonstrating measurable return on investment to stakeholders.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
-                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-cogs text-purple-600 text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Process Transformation</h3>
-                    <p class="text-gray-600">Moving beyond automating broken processes to fundamentally reimagining workflows for 10x improvements.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
-                    <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-users text-yellow-600 text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Talent & Workforce</h3>
-                    <p class="text-gray-600">Upskilling teams and creating a culture where AI augments human capabilities rather than replacing them.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
-                    <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-road text-indigo-600 text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Strategic Roadmapping</h3>
-                    <p class="text-gray-600">Developing a phased approach that starts with high-impact use cases and scales with confidence.</p>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <a href="/automations" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary transition font-medium">See Our Solutions</a>
-            </div>
-        </div>
-    </section>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="p-6 bg-red-50 rounded-lg border border-red-200">
+            <h3 class="text-xl font-bold text-red-900 mb-3 flex items-start gap-3">
+              <span class="text-2xl">❌</span>
+              <span>Surface-Level AI</span>
+            </h3>
+            <ul class="space-y-2 text-gray-700">
+              <li>• Buying AI tools without strategy</li>
+              <li>• Automating broken processes</li>
+              <li>• Optimizing workflows, not value</li>
+              <li>• Incremental 10-20% improvements</li>
+              <li>• No measurable customer impact</li>
+            </ul>
+          </div>
 
-    <!-- Approach Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-dark mb-4">Our Framework for Success</h2>
-                <p class="text-xl text-gray-600">A strategic approach to AI implementation that addresses core business challenges</p>
-            </div>
-            
-            <div class="max-w-5xl mx-auto">
-                <div class="flex flex-col md:flex-row items-start mb-8">
-                    <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-6">1</div>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Secure Foundation & Guardrails</h3>
-                        <p class="text-gray-600">Establishing policies, securing vendors, and designing architectures that keep sensitive data protected while enabling innovation.</p>
-                    </div>
-                </div>
-                
-                <div class="flex flex-col md:flex-row items-start mb-8">
-                    <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-6">2</div>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Pragmatic Data Readiness</h3>
-                        <p class="text-gray-600">Conducting AI readiness audits focused on high-value use cases and building solid data foundations for impactful projects.</p>
-                    </div>
-                </div>
-                
-                <div class="flex flex-col md:flex-row items-start mb-8">
-                    <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-6">3</div>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Value-First Roadmapping</h3>
-                        <p class="text-gray-600">Identifying use cases with clear, measurable ROI and building phased implementation plans to prove value and scale confidence.</p>
-                    </div>
-                </div>
-                
-                <div class="flex flex-col md:flex-row items-start mb-8">
-                    <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-6">4</div>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Process Reimagination</h3>
-                        <p class="text-gray-600">Facilitating workshops to map core processes and identify 10x transformation opportunities rather than incremental improvements.</p>
-                    </div>
-                </div>
-                
-                <div class="flex flex-col md:flex-row items-start">
-                    <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-6">5</div>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Change Management & Upskilling</h3>
-                        <p class="text-gray-600">Providing role-specific training and communication strategies to create a culture where AI is a partner, not a threat.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <a href="/automations" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary transition font-medium">Explore Implementation Framework</a>
-            </div>
+          <div class="p-6 bg-green-50 rounded-lg border border-green-200">
+            <h3 class="text-xl font-bold text-green-900 mb-3 flex items-start gap-3">
+              <span class="text-2xl">✓</span>
+              <span>Transformative AI</span>
+            </h3>
+            <ul class="space-y-2 text-gray-700">
+              <li>• Customer experience reimagined</li>
+              <li>• New value propositions enabled</li>
+              <li>• Products and services enhanced</li>
+              <li>• 5-10x improvements possible</li>
+              <li>• Clear bottom-line impact</li>
+            </ul>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- CTA Section -->
-    <section class="py-20 bg-primary">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-white mb-6">Ready to Move Beyond AI Hype?</h2>
-            <p class="text-xl text-white opacity-90 max-w-2xl mx-auto mb-8">Discover our framework-based automation solutions designed to address the full spectrum of AI integration challenges.</p>
-            <a href="/automations" class="bg-white text-primary px-8 py-4 rounded-lg hover:bg-gray-100 transition font-medium text-lg shadow-lg">Explore Business Workflows</a>
+  <!-- Three Dimensions Section -->
+  <section class="py-20 section-pattern">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-dark mb-4">AI Transformation Has Three Dimensions</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Most companies only focus on operational efficiency. Real transformation requires thinking across all three.
+        </p>
+      </div>
+
+      <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-xl shadow-lg card-hover border-t-4 border-blue-500">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+            <i class="fas fa-heart text-blue-600 text-2xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900">Customer Value</h3>
+          <p class="text-gray-700 mb-4 font-semibold">What your customers experience and receive</p>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-1">→</span>
+              <span>Personalized experiences at scale</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-1">→</span>
+              <span>Faster, smarter service delivery</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-1">→</span>
+              <span>New capabilities they couldn't get before</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-1">→</span>
+              <span>Products enhanced with intelligence</span>
+            </li>
+          </ul>
         </div>
-    </section>
+
+        <div class="bg-white p-8 rounded-xl shadow-lg card-hover border-t-4 border-green-500">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+            <i class="fas fa-chart-line text-green-600 text-2xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900">Business Impact</h3>
+          <p class="text-gray-700 mb-4 font-semibold">Revenue, margins, and strategic positioning</p>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start gap-2">
+              <span class="text-green-600 mt-1">→</span>
+              <span>New revenue streams unlocked</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-600 mt-1">→</span>
+              <span>Higher margins through intelligence</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-600 mt-1">→</span>
+              <span>Competitive moats created</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-600 mt-1">→</span>
+              <span>Market position strengthened</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-8 rounded-xl shadow-lg card-hover border-t-4 border-purple-500">
+          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+            <i class="fas fa-cogs text-purple-600 text-2xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900">Operations</h3>
+          <p class="text-gray-700 mb-4 font-semibold">How work gets done internally</p>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start gap-2">
+              <span class="text-purple-600 mt-1">→</span>
+              <span>Workflows reimagined, not just automated</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-purple-600 mt-1">→</span>
+              <span>Team capacity amplified</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-purple-600 mt-1">→</span>
+              <span>Decision-making enhanced</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-purple-600 mt-1">→</span>
+              <span>Resources freed for high-value work</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="max-w-3xl mx-auto mt-12 p-6 bg-white rounded-lg border-2 border-primary">
+        <p class="text-lg text-gray-800 text-center">
+          <strong>The Zeitgeist Ascend Approach:</strong> Start with customer value and business impact, then work backward to the operational changes needed to deliver them.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How We Help Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-dark mb-4">How We Help You Transform</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          From learning the fundamentals to building and launching real pilots, we meet you where you are.
+        </p>
+      </div>
+
+      <div class="max-w-6xl mx-auto">
+        <!-- Learning Path -->
+        <div class="mb-12 bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">1</div>
+            <h3 class="text-2xl font-bold text-gray-900">Learn the Framework</h3>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-6 ml-16">
+            <div class="bg-white p-6 rounded-lg shadow">
+              <div class="flex items-center gap-3 mb-3">
+                <i class="fas fa-video text-blue-600 text-xl"></i>
+                <h4 class="text-xl font-semibold">Free Intro Webinar</h4>
+              </div>
+              <p class="text-gray-700 mb-4">45-minute session on the Ascend approach: how to identify transformative use cases, prioritize pilots, and measure what matters.</p>
+              <ul class="space-y-2 text-gray-600 mb-4">
+                <li>• Thinking beyond workflow automation</li>
+                <li>• Customer value-first framework</li>
+                <li>• Real SMB transformation examples</li>
+              </ul>
+              <a href="/webinar" class="text-primary font-semibold hover:underline">Register for next session →</a>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow">
+              <div class="flex items-center gap-3 mb-3">
+                <i class="fas fa-book-open text-blue-600 text-xl"></i>
+                <h4 class="text-xl font-semibold">Free Resources Library</h4>
+              </div>
+              <p class="text-gray-700 mb-4">Guides, playbooks, tool reviews, and sector-specific templates—all focused on business outcomes.</p>
+              <ul class="space-y-2 text-gray-600 mb-4">
+                <li>• Transformation playbooks by industry</li>
+                <li>• Vetted tool recommendations</li>
+                <li>• Implementation case studies</li>
+              </ul>
+              <a href="/resources" class="text-primary font-semibold hover:underline">Browse resources →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hands-On Path -->
+        <div class="mb-12 bg-gradient-to-r from-green-50 to-emerald-50 p-8 rounded-xl">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl">2</div>
+            <h3 class="text-2xl font-bold text-gray-900">Build Your Pilot</h3>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-6 ml-16">
+            <div class="bg-white p-6 rounded-lg shadow">
+              <div class="flex items-center gap-3 mb-3">
+                <i class="fas fa-hands-helping text-green-600 text-xl"></i>
+                <h4 class="text-xl font-semibold">Hands-On Workshops</h4>
+              </div>
+              <p class="text-gray-700 mb-4">Paid, practical sessions where your team designs and plans a 30-60 day pilot focused on customer value or business impact.</p>
+              <ul class="space-y-2 text-gray-600 mb-4">
+                <li>• Use case selection with impact modeling</li>
+                <li>• Success metrics and measurement plan</li>
+                <li>• Tool selection and pilot blueprint</li>
+              </ul>
+              <a href="/workshops" class="text-primary font-semibold hover:underline">See workshop options →</a>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow">
+              <div class="flex items-center gap-3 mb-3">
+                <i class="fas fa-industry text-green-600 text-xl"></i>
+                <h4 class="text-xl font-semibold">Sector-Specific Sessions</h4>
+              </div>
+              <p class="text-gray-700 mb-4">Focused workshops for retail, B2B sales, logistics, professional services, and more—with ready-to-use templates.</p>
+              <ul class="space-y-2 text-gray-600 mb-4">
+                <li>• Industry-specific use cases</li>
+                <li>• Proven playbooks and automations</li>
+                <li>• Peer learning with similar businesses</li>
+              </ul>
+              <a href="/workshops#sectors" class="text-primary font-semibold hover:underline">Find your sector →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Execution Path -->
+        <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-8 rounded-xl">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl">3</div>
+            <h3 class="text-2xl font-bold text-gray-900">Execute & Scale</h3>
+          </div>
+          
+          <div class="ml-16 bg-white p-6 rounded-lg shadow">
+            <div class="flex items-center gap-3 mb-3">
+              <i class="fas fa-rocket text-purple-600 text-xl"></i>
+              <h4 class="text-xl font-semibold">Direct Engagement</h4>
+            </div>
+            <p class="text-gray-700 mb-4">Hire our team to work hands-on with yours: pilot support, implementation consulting, or managed services for businesses that need direct help.</p>
+            <ul class="space-y-2 text-gray-600 mb-4">
+              <li>• Pilot implementation and measurement</li>
+              <li>• End-to-end transformation consulting</li>
+              <li>• Managed AI services and support</li>
+            </ul>
+            <a href="/contact" class="text-primary font-semibold hover:underline">Discuss your needs →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Real Challenges Section -->
+  <section class="py-20 section-pattern">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-dark mb-4">Why Most AI Initiatives Fail</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          True transformation means addressing challenges across strategy, implementation, and culture—not just buying tools.
+        </p>
+      </div>
+      
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow card-hover">
+          <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
+            <i class="fas fa-bullseye text-red-600 text-xl"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Wrong Success Metrics</h3>
+          <p class="text-gray-600">Measuring process efficiency instead of customer value and revenue impact.</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow card-hover">
+          <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+            <i class="fas fa-puzzle-piece text-orange-600 text-xl"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Siloed Thinking</h3>
+          <p class="text-gray-600">Treating AI as an IT project rather than a business transformation initiative.</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow card-hover">
+          <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
+            <i class="fas fa-database text-yellow-600 text-xl"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Data & Infrastructure Gaps</h3>
+          <p class="text-gray-600">Messy, siloed data that undermines AI effectiveness and scalability.</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow card-hover">
+          <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+            <i class="fas fa-shield-alt text-green-600 text-xl"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Security & Compliance Paralysis</h3>
+          <p class="text-gray-600">Fear of GDPR, HIPAA, and AI Act requirements preventing any action.</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow card-hover">
+          <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <i class="fas fa-users text-blue-600 text-xl"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Talent & Culture Mismatch</h3>
+          <p class="text-gray-600">Teams unprepared to work alongside AI or resistant to change.</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow card-hover">
+          <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+            <i class="fas fa-chart-line text-purple-600 text-xl"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">No Clear ROI Path</h3>
+          <p class="text-gray-600">Unable to demonstrate measurable business value to stakeholders.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-lg text-gray-700 mb-6">Our approach addresses all of these—starting with quick wins that build momentum.</p>
+        <a href="/assessment" class="bg-primary text-white px-8 py-4 rounded-lg hover:bg-secondary transition font-semibold shadow-lg">
+          Assess Your Readiness (Free)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-dark mb-4">Stay Updated</h2>
+        <p class="text-gray-700 mb-6">Get practical guides, tool reviews, and transformation playbooks delivered to your inbox.</p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
+          <input 
+            id="news-email" 
+            type="email" 
+            placeholder="you@company.com" 
+            class="border-2 border-gray-300 px-4 py-3 rounded-lg flex-1 focus:border-primary focus:outline-none"
+          />
+          <button 
+            id="news-submit" 
+            class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary transition font-semibold whitespace-nowrap"
+          >
+            Subscribe
+          </button>
+        </div>
+        <p id="news-msg" class="text-sm text-gray-600 mt-3 min-h-[20px]"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-primary to-secondary">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold text-white mb-6">Ready to Transform Beyond the Hype?</h2>
+      <p class="text-xl text-white opacity-95 max-w-3xl mx-auto mb-10">
+        Start with a free assessment to identify your highest-impact opportunities for AI transformation—focused on customer value and business outcomes.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/assessment" class="bg-white text-primary px-8 py-4 rounded-lg hover:bg-gray-100 transition font-bold text-lg shadow-xl">
+          Take Free Assessment
+        </a>
+        <a href="/automations" class="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-primary transition font-bold text-lg">
+          Explore Playbooks
+        </a>
+      </div>
+    </div>
+  </section>
 
 </Layout>
 
+<script type="module">
+  const submit = document.getElementById('news-submit');
+  const input = document.getElementById('news-email');
+  const msg = document.getElementById('news-msg');
+  
+  if (submit && input && msg) {
+    submit.addEventListener('click', async () => {
+      const email = input.value.trim();
+      
+      if (!email || !email.includes('@')) {
+        msg.innerText = 'Please enter a valid email';
+        msg.className = 'text-sm text-red-600 mt-3';
+        return;
+      }
+      
+      submit.disabled = true;
+      msg.innerText = 'Subscribing...';
+      msg.className = 'text-sm text-gray-600 mt-3';
+      
+      try {
+        const res = await fetch('/api/save-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, lead_type: 'newsletter' })
+        });
+        
+        if (!res.ok) throw new Error('Subscription failed');
+        
+        msg.innerText = 'Success! Check your inbox for updates.';
+        msg.className = 'text-sm text-green-600 mt-3';
+        input.value = '';
+      } catch (e) {
+        console.error(e);
+        msg.innerText = 'Something went wrong. Please try again.';
+        msg.className = 'text-sm text-red-600 mt-3';
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  }
+</script>
+
 <style>
-   .section-pattern {
-            background-color: #f8fafc;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232564eb' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
+  .section-pattern {
+    background-color: #f8fafc;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232564eb' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.15);
+  }
 </style>

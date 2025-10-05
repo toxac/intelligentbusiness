@@ -7,6 +7,8 @@ import vercel from '@astrojs/vercel';
 
 import mdx from '@astrojs/mdx';
 
+import solidJs from '@astrojs/solid-js';
+
 // https://astro.build/config
 export default defineConfig({
   output:"server",
@@ -15,5 +17,5 @@ export default defineConfig({
   },
 
   adapter: vercel(),
-  integrations: [mdx()]
+  integrations: [mdx(), solidJs()]
 });

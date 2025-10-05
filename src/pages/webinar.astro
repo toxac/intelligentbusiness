@@ -1,0 +1,70 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Intro Webinar" description="Free webinar: AI Transformation for SMBs">
+  <section class="pt-20 pb-12">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">Free Intro Webinar: AI Transformation for Small Businesses</h1>
+      <p class="text-lg text-gray-600 mb-6">A 45-minute practical session that explains the Ascend approach and shows concrete use cases you can pilot this month.</p>
+
+      <div class="bg-white p-6 rounded-lg shadow-sm mb-6">
+        <h3 class="font-semibold mb-2">What you'll learn</h3>
+        <ul class="list-disc list-inside text-gray-700">
+          <li>How to pick a high-impact pilot that fits your business</li>
+          <li>Simple data and process checks to be pilot-ready</li>
+          <li>Customer experience, product, and people-first examples</li>
+          <li>Next steps: free assessment, paid workshop, or a consulting pilot</li>
+        </ul>
+      </div>
+
+      <form id="webinar-form" class="bg-white p-6 rounded-lg shadow-sm">
+        <label class="block mb-2 font-medium">Your name</label>
+        <input name="name" class="border px-3 py-2 rounded w-full mb-4" required />
+
+        <label class="block mb-2 font-medium">Work email</label>
+        <input name="email" type="email" class="border px-3 py-2 rounded w-full mb-4" required />
+
+        <label class="block mb-2 font-medium">Company size</label>
+        <select name="size" class="border px-3 py-2 rounded w-full mb-4">
+          <option value=">1-10">1-10</option>
+          <option value=">10-20">10-20</option>
+          <option value=">20-100">20-100</option>
+          <option value=">100+">100+</option>
+        </select>
+
+        <label class="block mb-2 font-medium">Area of interest</label>
+        <select name="area" class="border px-3 py-2 rounded w-full mb-4">
+          <option>Customer Experience</option>
+          <option>Marketing & Sales</option>
+          <option>Operations & Logistics</option>
+          <option>Product & R&D</option>
+        </select>
+
+        <div class="mt-4">
+          <button id="register" class="bg-primary text-white px-5 py-3 rounded-lg">Reserve My Seat</button>
+        </div>
+      </form>
+
+      <p class="text-sm text-gray-500 mt-4">After you register we'll send a calendar invite, prep worksheet, and a link to the replay. We use Supabase to store signups and n8n to automate follow-ups.</p>
+    </div>
+  </section>
+
+  <script type="module">
+    document.getElementById('register').addEventListener('click', async (e) => {
+      e.preventDefault();
+      const form = document.getElementById('webinar-form');
+      const data = Object.fromEntries(new FormData(form));
+      try {
+        // Replace with your Supabase function or API route
+        await fetch('/api/save-webinar', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+        alert('Thanks! We saved your registration and will email the invite shortly.');
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        alert('There was an error registering. Please try again later.');
+      }
+    });
+  </script>
+
+</Layout>

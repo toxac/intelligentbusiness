@@ -1,0 +1,38 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { supabaseServer } from '../../lib/supabaseServer';
+import AssessmentResult from '../../components/AssessmentResult';
+
+export async function get({ params }) {
+  const id = params.id;
+  // Fetch assessment and related lead
+  const { data: assessments } = await supabaseServer.from('assessments').select('*').eq('id', id).limit(1);
+  const assessment = assessments && assessments[0] ? assessments[0] : null;
+  let lead = null;
+  if (assessment?.lead_id) {
+    const { data: leads } = await supabaseServer.from('leads').select('*').eq('id', assessment.lead_id).limit(1);
+    lead = leads && leads[0] ? leads[0] : null;
+  }
+  return {
+    props: {
+      assessment,
+      lead
+    }
+  };
+}
+---
+
+<Layout title={`Assessment result`} description="Your Ascend assessment result">
+  <section class="pt-20 pb-12">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h1 class="text-2xl font-bold mb-4">Your Assessment</h1>
+      <div class="bg-white p-6 rounded-lg shadow-sm">
+        <!-- Render client-side Solid component for interactivity -->
+        <AssessmentResult client:load assessment={Astro.props.assessment} lead={Astro.props.lead} />
+      </div>
+      <div class="mt-6">
+        <a href="/" class="text-primary">Back to home</a>
+      </div>
+    </div>
+  </section>
+</Layout>
