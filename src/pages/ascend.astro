@@ -1,82 +1,132 @@
 ---
-import Layout from "../layouts/Layout.astro";
+// Define the title for the page
+const title = "The Ascend Framework: Your Path to AI-Driven Value";
+
+// Assuming your Layout component is at this path, update if different
+import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Ascend Framework" description="Zeitgeist Ascend: a 5-stage framework for practical AI transformation">
-  <section class="pt-20 pb-12">
-    <div class="container mx-auto px-4 max-w-4xl">
-      <h1 class="text-3xl md:text-4xl font-bold mb-4">Zeitgeist Ascend: A Practical Path to AI Transformation</h1>
-      <p class="text-lg text-gray-600 mb-6">A simple, business-first approach to using AI to improve customer experience, product development, and how people work — designed for small and mid-size businesses without large engineering teams.</p>
+<Layout title={title} description="Complete Business transformation with zdd Ascend framework">
+    <div class="container mx-auto px-4">
 
-      <div class="bg-white p-6 rounded-lg shadow-sm mb-8">
-        <h2 class="text-2xl font-semibold mb-3">Why Ascend?</h2>
-        <p class="text-gray-700">Many AI projects fail because they start with technology. Ascend starts with value: specific business outcomes you can measure. Then we pick the tools, design the workflows, and make change stick.</p>
-      </div>
-
-      <h2 class="text-2xl font-semibold mb-4">The Five Stages of Ascend</h2>
-
-      <div class="space-y-6">
-        <div class="p-4 bg-gray-50 rounded">
-          <h3 class="text-xl font-semibold">1. Base Camp — Survey the Summit</h3>
-          <p class="text-gray-700">Define a clear business outcome (your summit) and gather baseline metrics. Focus on one high-impact area — customer experience, product insight, or workforce optimization.</p>
-          <ul class="list-disc list-inside text-gray-600 mt-2">
-            <li>Define 30/60/90 day targets</li>
-            <li>Map current performance baselines</li>
-            <li>Identify one bottleneck to solve first</li>
-          </ul>
+        <!-- Hero Section -->
+        <div class="hero bg-base-100 rounded-xl shadow-lg p-10 mb-12">
+            <div class="hero-content text-center">
+                <div class="max-w-3xl">
+                    <h1 class="text-5xl font-extrabold text-primary mb-4">
+                        The Ascend Framework
+                    </h1>
+                    <p class="text-lg md:text-xl text-neutral-content">
+                        Stop guessing about AI transformation. Ascend provides a <strong class="font-bold">value-first, low-risk, seven-stage roadmap</strong> to integrate intelligent tools exactly where they deliver the highest impact.
+                    </p>
+                    <div class="mt-6">
+                        <span class="badge badge-lg badge-secondary font-bold">Risk Managed. Value Delivered.</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="p-4 bg-gray-50 rounded">
-          <h3 class="text-xl font-semibold">2. The Route — Choose Your Gear</h3>
-          <p class="text-gray-700">Pick tools and vendors that match the use case and your team's capacity. Use a simple impact vs effort evaluation so you don't over-buy.</p>
-          <p class="text-gray-600 mt-2">Example outputs: chosen tool, integration plan, budget estimate.</p>
-        </div>
+        <!-- Why Ascend Works Section -->
+        <section class="mb-12">
+            <h2 class="text-4xl font-bold text-center mb-8 text-neutral-content">
+                Why Our Approach Eliminates Risk
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                
+                <div class="card bg-base-100 shadow-xl border border-warning">
+                    <div class="card-body">
+                        <h3 class="card-title text-2xl text-warning">Value-First Mandate</h3>
+                        <p>We start by identifying goals focused on **revenue growth and customer experience**, not just cost cutting. Your transformation is measured by new value creation, ensuring executive alignment from Day 1.</p>
+                    </div>
+                </div>
 
-        <div class="p-4 bg-gray-50 rounded">
-          <h3 class="text-xl font-semibold">3. The Climb — Map the Traverse</h3>
-          <p class="text-gray-700">Design the end-to-end workflow that combines AI capabilities with human decisions. Define roles, hand-offs, and quality checks.</p>
-          <p class="text-gray-600 mt-2">Example outputs: workflow diagram, roles matrix, training checklist.</p>
-        </div>
+                <div class="card bg-base-100 shadow-xl border border-primary">
+                    <div class="card-body">
+                        <h3 class="card-title text-2xl text-primary">Focused Pilot Capacity</h3>
+                        <p>We avoid multi-million dollar commitments. Ascend champions the <strong class="font-semibold">30-Day Sprint</strong>, testing solutions on small, clearly defined bottlenecks to prove ROI before large-scale adoption.</p>
+                    </div>
+                </div>
 
-        <div class="p-4 bg-gray-50 rounded">
-          <h3 class="text-xl font-semibold">4. Check Altitude — Track the Ascent</h3>
-          <p class="text-gray-700">Measure progress with a small set of KPIs tied to money, time, or customer experience. Schedule regular reviews and decide when to pivot or scale.</p>
-        </div>
+                <div class="card bg-base-100 shadow-xl border border-secondary">
+                    <div class="card-body">
+                        <h3 class="card-title text-2xl text-secondary">Operational Readiness</h3>
+                        <p>We ensure your processes and data foundation are clean *before* implementing AI. A structured approach guarantees that smart tools amplify efficient work, not chaos.</p>
+                    </div>
+                </div>
 
-        <div class="p-4 bg-gray-50 rounded">
-          <h3 class="text-xl font-semibold">5. New Peak — Plant the Flag</h3>
-          <p class="text-gray-700">Standardize the new process, document the lessons, and identify the next high-impact opportunity. Turn pilots into repeatable playbooks.</p>
-        </div>
-      </div>
+            </div>
+        </section>
 
-      <h2 class="text-2xl font-semibold mt-8 mb-4">Ascend Toolkit</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="bg-white p-4 rounded shadow-sm">
-          <h4 class="font-semibold">Ascent Map</h4>
-          <p class="text-sm text-gray-600">One-page planner: peak goal, timeline, selected gear, primary metric.</p>
-        </div>
-        <div class="bg-white p-4 rounded shadow-sm">
-          <h4 class="font-semibold">Ascent Log</h4>
-          <p class="text-sm text-gray-600">Weekly tracker for progress, challenges, and adjustments.</p>
-        </div>
-        <div class="bg-white p-4 rounded shadow-sm">
-          <h4 class="font-semibold">Summit Scorecard</h4>
-          <p class="text-sm text-gray-600">A compact KPI dashboard template to track efficiency, quality, and business impact.</p>
-        </div>
-      </div>
+        <!-- The Seven Stages of Ascent -->
+        <section class="mb-12">
+            <h2 class="text-4xl font-bold text-center mb-10 text-neutral-content">
+                The Seven Stages of Your Value Ascent 
+            </h2>
+            
+            <ul class="steps steps-vertical lg:steps-horizontal w-full">
+                
+                <li data-content="0" class="step step-primary">
+                    <div class="text-center p-2">
+                        <h3 class="font-bold">Vision Platform</h3>
+                        <p class="text-sm opacity-70">Achieve mandatory leadership alignment and commitment to value-centric goals.</p>
+                    </div>
+                </li>
 
-      <h2 class="text-2xl font-semibold mt-8 mb-4">A Practical 30-Day Plan</h2>
-      <ol class="list-decimal list-inside text-gray-700">
-        <li class="mb-2"><strong>Week 1:</strong> Base Camp — pick the pilot & capture baseline data.</li>
-        <li class="mb-2"><strong>Week 2:</strong> The Route — choose a tool, build quick integrations.</li>
-        <li class="mb-2"><strong>Week 3:</strong> The Climb — run a short pilot, collect results.</li>
-        <li class="mb-2"><strong>Week 4:</strong> Check Altitude — review KPIs, make go/no-go decision.</li>
-      </ol>
+                <li data-content="1" class="step step-primary">
+                    <div class="text-center p-2">
+                        <h3 class="font-bold">High-Value Target (HVT)</h3>
+                        <p class="text-sm opacity-70">Clearly define and quantify the top 3 process bottlenecks that limit value creation.</p>
+                    </div>
+                </li>
 
-      <div class="mt-8 text-center">
-        <a href="/assessment" class="bg-primary text-white px-6 py-3 rounded-lg mr-3">Take the Free Assessment</a>
-        <a href="/webinar" class="border px-6 py-3 rounded-lg">Join the Intro Webinar</a>
-      </div>
+                <li data-content="2" class="step step-primary">
+                    <div class="text-center p-2">
+                        <h3 class="font-bold">Pick Your Gear</h3>
+                        <p class="text-sm opacity-70">Select the right low-cost, iterative tools (not large enterprise systems) for the HVT.</p>
+                    </div>
+                </li>
+
+                <li data-content="3" class="step">
+                    <div class="text-center p-2">
+                        <h3 class="font-bold">Process & Pilot</h3>
+                        <p class="text-sm opacity-70">Map and standardize the process. Execute the 30-Day Sprint with a dedicated team.</p>
+                    </div>
+                </li>
+                
+                <li data-content="4" class="step">
+                    <div class="text-center p-2">
+                        <h3 class="font-bold">Measure Success</h3>
+                        <p class="text-sm opacity-70">Implement a Scorecard Framework to rigorously track value creation (not just usage).</p>
+                    </div>
+                </li>
+                
+                <li data-content="5" class="step">
+                    <div class="text-center p-2">
+                        <h3 class="font-bold">Expand & Automate</h3>
+                        <p class="text-sm opacity-70">Roll out proven solutions to adjacent business units and integrate data streams.</p>
+                    </div>
+                </li>
+                
+                <li data-content="6" class="step">
+                    <div class="text-center p-2">
+                        <h3 class="font-bold">Talent Re-skilling</h3>
+                        <p class="text-sm opacity-70">Future-proof your team with mandatory training and establish an adaptive, empowered culture.</p>
+                    </div>
+                </li>
+
+            </ul>
+        </section>
+
+        <!-- Call to Action -->
+        <div class="card bg-primary text-primary-content shadow-xl p-8 text-center mt-12 mb-10">
+            <h2 class="text-3xl font-bold mb-3">Ready to start your Value Ascent?</h2>
+            <p class="mb-5 text-lg opacity-90">
+                The first step is understanding your current readiness. Take the assessment now to plot your custom roadmap.
+            </p>
+            <a href="/assessment" class="btn btn-secondary btn-lg shadow-lg hover:shadow-xl hover:bg-secondary/90">
+                Start Readiness Assessment Now &rarr;
+            </a>
+        </div>
+        
     </div>
-  </section>
 </Layout>
